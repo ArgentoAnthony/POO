@@ -25,6 +25,8 @@ namespace Demo.Models
 
         #region Constructeurs
 
+        public Entity() { }
+
         public Entity(string name)
         {
             Random r = new Random();
@@ -66,5 +68,26 @@ namespace Demo.Models
         }
 
         #endregion
+
+        public static Entity operator +(Entity a, Entity b)
+        {
+            Entity result = new Entity();
+            result.Name = a.Name +b.Name;
+            result.Stats[StatType.Hp] = a.Stats[StatType.Hp] + b.Stats[StatType.Hp];
+            result.Stats[StatType.Strength] = a.Stats[StatType.Strength] + b.Stats[StatType.Strength];
+            result.Stats[StatType.Stamina] = a.Stats[StatType.Stamina] + b.Stats[StatType.Stamina];
+
+            return result;
+        }
+
+        public static bool operator ==(Entity a, Entity b)
+        {
+            return a.Name == b.Name && a.Stats == b.Stats;           
+        }
+
+        public static bool operator !=(Entity a, Entity b)
+        {
+            return !(a == b);
+        }
     }
 }

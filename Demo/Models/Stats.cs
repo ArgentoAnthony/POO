@@ -41,5 +41,25 @@ namespace Demo.Models
         {
             this[stat] += amount;
         }
+
+        public static bool operator ==(Stats a, Stats b) 
+        {
+            bool isEqual = true;
+            foreach (StatType stat in Enum.GetValues<StatType>())
+            {
+                if (a[stat] != b[stat])
+                {
+                    isEqual = false;
+                }
+            }
+            return isEqual;
+        }
+
+        public static bool operator !=(Stats a, Stats b)
+        {
+            return !(a == b);
+        }
+
+
     }
 }
