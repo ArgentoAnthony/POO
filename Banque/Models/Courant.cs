@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace FilRougeBanque.Models
 {
-    public class Courant
+    public class Courant : Compte
     {
         private decimal _ligneDeCredit;
-
-        public string Numero { get; set; }
-
-        public decimal Solde { get; private set; }
 
         public decimal LigneDeCredit
         {
@@ -30,36 +27,9 @@ namespace FilRougeBanque.Models
             }
         }
 
-        public Personne Titulaire { get; set; }
-
-        public void Retrait(decimal montant)
+        public override void Retrait(decimal montant)
         {
-            if (montant < 0)
-            {
-                return;
-            }
-            if (Solde - montant < -LigneDeCredit)
-            {
-                return;
-            }
-            Solde -= montant;
+            Retrait(montant, LigneDeCredit);
         }
-
-        public void Depot(decimal montant)
-        {
-            if (montant < 0)
-            {
-                return;
-            }
-            Solde += montant;
-        }
-
-        public static Courant operator +(Courant a, Courant b)
-        {
-            Courant result = new Courant();
-            result.Solde = a.Solde + b.Solde;
-            return result;
-        }
-
     }
 }

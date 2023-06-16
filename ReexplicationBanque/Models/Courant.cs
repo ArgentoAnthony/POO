@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ReexplicationBanque.Models
 {
-    internal class Courant
+    public class Courant
     {
         #region Attributs
         private decimal _ligneDeCredit;
@@ -30,7 +30,7 @@ namespace ReexplicationBanque.Models
                 _ligneDeCredit = value;
             }
         }
-       
+
         public string Numero { get; set; }
         public decimal Solde { get; private set; }
 
@@ -55,12 +55,32 @@ namespace ReexplicationBanque.Models
             {
                 return;
             }
-            if(Solde - montant < -LigneDeCredit)
+            if (Solde - montant < -LigneDeCredit)
             {
                 return;
             }
-            Solde-= montant;
+            Solde -= montant;
         }
+
+        public override string ToString()
+        {
+            return $"Numero : {Numero}\n" +
+                   $"Titulaire : {Titulaire.Prenom}" +
+                   $"___________________________________________";
+        }
+        public static decimal operator +(Courant a, Courant b)
+        {
+            //Courant result = new Courant();
+            //result.Solde = a.Solde + b.Solde;
+            //return result;
+            return a.Solde + b.Solde;
+        }
+
+        public static decimal operator +(decimal somme, Courant c)
+        {
+            return somme + c.Solde > 0 ? c.Solde : 0;
+        }
+
 
         #endregion
     }

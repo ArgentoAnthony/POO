@@ -30,24 +30,8 @@ Courant c2 = new Courant()
     Titulaire = p2,
 };
 
-Courant c3 = new Courant()
-{
-    Numero = "3",
-    LigneDeCredit = 5000,
-    Titulaire = p2,
-};
-
-Courant c4 = new Courant()
-{
-    Numero = "4",
-    LigneDeCredit = 2000,
-    Titulaire = p2,
-};
-
 banque.Ajouter(c);
 banque.Ajouter(c2);
-
-
 
 Console.WriteLine($"{banque["1"].Numero} : {banque["1"].Titulaire.Nom} : {banque["1"].Solde}");
 banque["1"].Depot(1000);
@@ -59,6 +43,12 @@ Console.WriteLine($"{banque["1"].Numero} : {banque["1"].Titulaire.Nom} : {banque
 Console.WriteLine($"{banque["2"].Numero} : {banque["2"].Titulaire.Nom} : {banque["2"].Solde}");
 banque["2"].Depot(2000);
 Console.WriteLine($"{banque["2"].Numero} : {banque["2"].Titulaire.Nom} : {banque["2"].Solde}");
-banque["2"].Retrait(2250);
+banque["2"].Retrait(1000);
 Console.WriteLine($"{banque["2"].Numero} : {banque["2"].Titulaire.Nom} : {banque["2"].Solde}");
+
+Console.WriteLine(1000 + c2);
+
+Console.WriteLine(banque.AvoirDesComptes(p2));
+
+
 
