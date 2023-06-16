@@ -6,19 +6,23 @@ using System.Threading.Tasks;
 
 namespace Demo.Models.Vehicules
 {
-    public class Vehicule
+    public abstract class Vehicule
     {
+        private static int _id = 1;
+
+        public Vehicule()
+        {
+            Id = _id++;
+        }
+        public int Id { get; set; }
         public string Marque { get; set; }
         public decimal Prix { get; set; }
-
-        public virtual void Deplacer()
-        {
-            Console.WriteLine("Le véhicule se déplace");
-        }
+        public abstract void Deplacer();
+        // Sera forcément utilisée par les enfants
 
         public override string ToString()
         {
-            return $"{Marque} : {Prix}";
+            return $"{Id} : {Marque} : {Prix}";
         }
     }
 }

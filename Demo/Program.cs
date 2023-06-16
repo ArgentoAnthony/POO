@@ -1,5 +1,8 @@
 ﻿using Demo.Models;
 using Demo.Models.Vehicules;
+using Demo.Services;
+using Demo.Utilis;
+using static Demo.Utilis.Dice;
 
 #region surcharge
 
@@ -34,51 +37,51 @@ using Demo.Models.Vehicules;
 
 #endregion
 
+#region heritage
 //Employee noreen = new Employee();
 
-List<Vehicule> catalog = new List<Vehicule>()
-{
-    new Vehicule()
-    {
-        Marque = "Hyundai",
-        Prix = 9999
-    },
-    new Voiture()
-    {
-        Marque = "Dodge",
-    Prix = 10000,
-    Couleur = "Noir"
-    },
-    new Avion()
-    {
-            Marque = "Diamond",
-    Prix = 200000,
-    Speed = 300
-    }
+//List<Vehicule> catalog = new List<Vehicule>()
+//{
+//    new Voiture()
+//    {
+//        Marque = "Dodge",
+//    Prix = 10000,
+//    Couleur = "Noir"
+//    },
+//    new Avion()
+//    {
+//            Marque = "Diamond",
+//    Prix = 200000,
+//    Speed = 300
+//    }
 
-};
+//};
 
-foreach (Vehicule v in catalog)
-{
-    Console.WriteLine(v);
-    //v.Deplacer();
-    switch (v)
-    {
-        case Voiture vo:
-            vo.Deplacer();
-            break;
-        case Avion a:
-            a.Deplacer(); 
-            break;
-        case Vehicule ve:
-            ve.Deplacer(); 
-            break;
-    }
-}
+//foreach (Vehicule v in catalog)
+//{
+//    Console.WriteLine(v);
+//    v.Deplacer();
 
+//}
 
+//Console.WriteLine(/*Dice.*/Throw(5,3)); // Plus besoin de spécifier Dice. car on a fait un usine static de Dice
 
+////Extention.SuperCamelCase("coucou");
 
+//string s = "        cou cou";
+
+//Console.WriteLine(s.SuperCamelCase());
+//Console.WriteLine(s.Trim(true));
+
+#endregion
+
+//IBookService bookService = new BookService();
+
+//bookService.Add(new Book());
+
+IBateau a = new Amphibie();
+
+a.Tourne();
 
 #region demo 2 indexeur
 

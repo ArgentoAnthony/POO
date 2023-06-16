@@ -9,7 +9,6 @@ namespace Demo.Models.Vehicules
     public class Voiture : Vehicule
     {
         public string Couleur { get; set; }
-
         public override void Deplacer()
         {
             Console.WriteLine("Et je roule roule");
@@ -17,6 +16,10 @@ namespace Demo.Models.Vehicules
         public override string ToString()
         {
             return base.ToString() + $" : {Couleur}";
+        }
+        public void Tourne()
+        {
+            Console.WriteLine("Je tourne le volant");
         }
     }
 }

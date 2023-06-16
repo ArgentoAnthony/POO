@@ -27,15 +27,28 @@ Courant c2 = new Courant()
 };
 // Pour manipuler le solde on doit passer par Dépot ou retrait
 c.Depot(100);
-Console.WriteLine(c.Solde);
 c.Retrait(100);
-Console.WriteLine(c.Solde);
+
+Courant c3 = new Courant()
+{
+    Numero = "456",
+    LigneDeCredit = 500,
+    Titulaire = client,
+};
+
+c3.Depot(1000);
+
 
 Banque belfius = new Banque();
 belfius.Name = "Belfius";
 
 belfius.Ajouter(c);
-Console.WriteLine(belfius["123"].Titulaire.DateNaiss.Day);
+belfius.Ajouter(c3);
+
+Epargne e = new Epargne();
+
+
+//Console.WriteLine(belfius["123"].Titulaire.DateNaiss.Day);
 
 //Courant nouveauCompte = creerCompte();
 

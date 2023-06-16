@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FilRougeBanque.Models
 {
-    public class Compte
+    public abstract class Compte
     {
         public string Numero { get; set; }
 
@@ -59,5 +59,15 @@ namespace FilRougeBanque.Models
             //}
             return somme + (c.Solde > 0 ? c.Solde : 0);
         }
+
+        protected abstract decimal CalculInteret();
+
+        public void AppliquerInteret()
+        {
+            Solde += CalculInteret();
+        }
+
+
+
     }
 }

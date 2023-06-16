@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace ReexplicationBanque.Models
 {
-    public class Courant
+    public class Courant : Compte
     {
         #region Attributs
         private decimal _ligneDeCredit;
         #endregion
-
-        #region Propriétés
         public decimal LigneDeCredit
         {
             get
@@ -31,57 +29,11 @@ namespace ReexplicationBanque.Models
             }
         }
 
-        public string Numero { get; set; }
-        public decimal Solde { get; private set; }
-
-        public Personne Titulaire { get; set; }
-
-        #endregion
-
-        #region méthodes
-
-        public void Depot(decimal montant)
+        public override void Retrait(decimal montant)
         {
-            if (montant < 0)
-            {
-                return;
-            }
-            Solde += montant;
+            // Appel de la surcharge de la methode retrait de la classe parent (Compte)
+            // etant donné que la surcharge n'est pas virtuelle et jamais override, le base. n'est pas obligatoire
+            base.Retrait(montant, LigneDeCredit); 
         }
-
-        public void Retrait(decimal montant)
-        {
-            if (montant < 0)
-            {
-                return;
-            }
-            if (Solde - montant < -LigneDeCredit)
-            {
-                return;
-            }
-            Solde -= montant;
-        }
-
-        public override string ToString()
-        {
-            return $"Numero : {Numero}\n" +
-                   $"Titulaire : {Titulaire.Prenom}" +
-                   $"___________________________________________";
-        }
-        public static decimal operator +(Courant a, Courant b)
-        {
-            //Courant result = new Courant();
-            //result.Solde = a.Solde + b.Solde;
-            //return result;
-            return a.Solde + b.Solde;
-        }
-
-        public static decimal operator +(decimal somme, Courant c)
-        {
-            return somme + c.Solde > 0 ? c.Solde : 0;
-        }
-
-
-        #endregion
     }
 }

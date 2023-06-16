@@ -31,5 +31,16 @@ namespace FilRougeBanque.Models
         {
             Retrait(montant, LigneDeCredit);
         }
+        protected override decimal CalculInteret()
+        {
+            //if (Solde >= 0)
+            //{
+            //    return Solde * 0.03M;
+            //}
+            //return Solde * 0.975M;
+
+            return Solde * (Solde >= 0 ? .03M : 0.975M);
+        }
+
     }
 }

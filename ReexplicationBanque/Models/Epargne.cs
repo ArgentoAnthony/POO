@@ -4,23 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FilRougeBanque.Models
+namespace ReexplicationBanque.Models
 {
-    internal class Epargne: Compte
+    public class Epargne : Compte
     {
-        public DateTime DateDernierRetrait {get; set;}
-        public void Retrait(decimal montant)
+        public DateTime DateDernierRetrait { get; private set; }
+
+        public override void Retrait(decimal montant)
         {
             decimal ancienSolde = Solde;
+            // Appel de la méthode retrait de la classe parent (Compte)
             base.Retrait(montant);
-            if (ancienSolde > Solde)
+            if(Solde < ancienSolde)
             {
                 DateDernierRetrait = DateTime.Now;
             }
-        }
-        protected override decimal CalculInteret()
-        {
-            return Solde * 0.045M;
         }
     }
 }

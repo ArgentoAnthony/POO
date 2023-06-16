@@ -48,6 +48,9 @@ Console.WriteLine($"{banque["2"].Numero} : {banque["2"].Titulaire.Nom} : {banque
 
 Console.WriteLine(1000 + c2);
 
+// Solde de 1000 + 3% d'interet = 1030
+c2.AppliquerInteret();
+
 Console.WriteLine(banque.AvoirDesComptes(p2));
 
 
