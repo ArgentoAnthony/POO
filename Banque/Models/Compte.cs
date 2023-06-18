@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace FilRougeBanque.Models
 {
-    public abstract class Compte
+    public abstract class Compte : ICustomer, IBanker
     {
+
         public string Numero { get; set; }
 
         public decimal Solde { get; private set; }
@@ -20,7 +21,7 @@ namespace FilRougeBanque.Models
             Retrait(montant, 0);
         }
 
-        public void Retrait(decimal montant, decimal ligneDeCredit)
+        protected void Retrait(decimal montant, decimal ligneDeCredit)
         {
             if (montant < 0)
             {

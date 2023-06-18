@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace FilRougeBanque.Models
 {
-    internal interface ICustomer
+    public interface ICustomer
     {
+        decimal Solde { get; }
+
+        void Retrait(decimal montant);
+        void Depot(decimal montant);
     }
 }

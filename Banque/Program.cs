@@ -53,5 +53,12 @@ c2.AppliquerInteret();
 
 Console.WriteLine(banque.AvoirDesComptes(p2));
 
+ICustomer customer = c2;
+IBanker banker = c2;
+
+customer.Depot(10000);
+banker.AppliquerInteret();
+
+
 
 

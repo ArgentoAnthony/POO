@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace FilRougeBanque.Models
 {
-    internal interface IBanker
+    public interface IBanker : ICustomer
     {
+        Personne Titulaire { get; }
+        string Numero { get; }
+        void AppliquerInteret();
+
     }
 }
