@@ -9,6 +9,10 @@ namespace Demo.Models.Vehicules
 {
     public class Amphibie : Voiture, IBateau
     {
+        public Amphibie(string marque, decimal prix, string couleur) : base(marque, prix, couleur)
+        {
+        }
+
         public void Navigue()
         {
             throw new NotImplementedException();

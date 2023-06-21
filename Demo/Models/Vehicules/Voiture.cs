@@ -8,6 +8,12 @@ namespace Demo.Models.Vehicules
 {
     public class Voiture : Vehicule
     {
+        public Voiture(string marque, decimal prix, string couleur) : base(marque, prix) //base permet de remonter chez le parent
+        {
+            Marque = marque;
+            Prix = prix;
+            Couleur = couleur;
+        }
         public string Couleur { get; set; }
         public override void Deplacer()
         {

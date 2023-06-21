@@ -1,8 +1,89 @@
-﻿using Demo.Models;
+﻿using Demo;
+using Demo.Models;
 using Demo.Models.Vehicules;
 using Demo.Services;
 using Demo.Utilis;
+using System.Threading.Channels;
 using static Demo.Utilis.Dice;
+
+#region lambda / delegate
+
+DemoDelegate demo = new DemoDelegate();
+//demo.del += Addition;
+
+////demo.del += delegate (int a, int b)
+////{
+////    Console.WriteLine(a + b);
+////};
+
+//demo.del += (int a, int b) =>
+//{
+//    Console.WriteLine(a - b);
+//};
+
+//demo.del += (int a, int b) => Console.WriteLine(a * b);
+
+//demo.del(5, 3);
+
+//static void Addition(int a, int b)
+//{
+//    Console.WriteLine(a + b);
+//}
+
+demo.del += (int a, int b) =>
+{
+    Console.WriteLine(a - b);
+};
+
+myDel lambda = (int a, int b) => Console.WriteLine(a * b);
+
+demo.del += lambda;
+demo.del -= lambda;
+
+//demo.del(5.3);
+
+Action<string, int> a = delegate (string name, int age) { Console.WriteLine("coucou " + name+ " tu as " + age+" ans"); };
+a("Antho", 32);
+
+List<string> list = new List<string>
+{
+    "Pierre",
+    "Paul",
+    "Jacques",
+    "Bernadette"
+};
+
+list.ForEach(s => Console.WriteLine(s));
+
+
+
+
+#endregion
+
+#region Exception
+
+//Vehicule v = new Voiture("Dodge", 10000,"Rouge");
+
+
+//try
+//{
+//    v.Prix = -100;
+//    Console.WriteLine("Success");
+//}catch(NotFiveException e)
+//{
+//    Console.WriteLine(e.Message);
+//}catch(ArgumentOutOfRangeException e)
+//{
+//    v.Prix = 0;
+//    Console.WriteLine(e.Message);
+//}catch( Exception e)
+//{
+//    Console.WriteLine(e.Message);  
+//}
+
+//Console.WriteLine(v);
+
+#endregion
 
 #region surcharge
 
@@ -79,9 +160,9 @@ using static Demo.Utilis.Dice;
 
 //bookService.Add(new Book());
 
-IBateau a = new Amphibie();
+//IBateau a = new Amphibie();
 
-a.Tourne();
+//a.Tourne();
 
 #region demo 2 indexeur
 

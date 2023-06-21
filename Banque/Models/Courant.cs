@@ -11,6 +11,13 @@ namespace FilRougeBanque.Models
     {
         private decimal _ligneDeCredit;
 
+        public Courant(string numero, Personne titulaire) : base(numero, titulaire) { }
+        public Courant(string numero, Personne titulaire, decimal solde) : base(numero, titulaire,solde) { }    
+        public Courant(string numero, decimal ligneDeCredit, Personne titulaire) : base(numero, titulaire)
+        {
+            LigneDeCredit = ligneDeCredit;
+        }
+
         public decimal LigneDeCredit
         {
             get
@@ -21,7 +28,7 @@ namespace FilRougeBanque.Models
             {
                 if (value < 0)
                 {
-                    return;
+                    throw new InvalidOperationException("La ligne de crédit est inférieure à 0");
                 }
                 _ligneDeCredit = value;
             }

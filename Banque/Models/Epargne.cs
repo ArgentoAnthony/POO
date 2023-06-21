@@ -8,7 +8,9 @@ namespace FilRougeBanque.Models
 {
     internal class Epargne: Compte
     {
-        public DateTime DateDernierRetrait {get; set;}
+        public Epargne(string numero, Personne titulaire) : base(numero, titulaire) { }
+        public Epargne(string numero, Personne titulaire, decimal solde) : base(numero, titulaire) { }
+        public DateTime DateDernierRetrait {get;private set;}
         public void Retrait(decimal montant)
         {
             decimal ancienSolde = Solde;

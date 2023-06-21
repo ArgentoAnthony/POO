@@ -9,12 +9,21 @@ namespace FilRougeBanque.Models
 {
     public abstract class Compte : ICustomer, IBanker
     {
+        public Compte(string numero, Personne titulaire)
+        {
+            Numero = numero;
+            Titulaire = titulaire;
+        }
+        public Compte(string numero, Personne titulaire, decimal solde) : this(numero, titulaire)
+        {
+            Solde = solde;
+        }
 
-        public string Numero { get; set; }
+        public string Numero { get;private set; }
 
         public decimal Solde { get; private set; }
 
-        public Personne Titulaire { get; set; }
+        public Personne Titulaire { get;private set; }
 
         public virtual void Retrait(decimal montant)
         {
@@ -27,9 +36,9 @@ namespace FilRougeBanque.Models
             {
                 return;
             }
-            if (montant - Solde < -ligneDeCredit)
+            if (Solde - montant < -ligneDeCredit)
             {
-
+                throw new SoldeInsuffisantException("Vous etes trop pauvre pour retirer autant");
             }
             Solde -= montant;
         }
@@ -38,7 +47,7 @@ namespace FilRougeBanque.Models
         {
             if (montant < 0)
             {
-                return;
+                throw new ArgumentOutOfRangeException("Le dépôt doit être positif");
             }
             Solde += montant;
         }
